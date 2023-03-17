@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.Pengaduan.DetailPengaduanFragment"
+    android:background="@color/primary">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/HomeTitle"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:paddingHorizontal="@dimen/screen_margin"
+            android:paddingVertical="@dimen/large_margin"
+            android:text="Detail Pengaduan"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/zero_dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HomeTitle"
+            android:fillViewport="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardView.TopCorners"
+                    android:id="@+id/materialCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/screen_margin"
+                        android:layout_marginTop="@dimen/screen_margin">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/outputGambarPengaduan"
+                            style="@style/Rounded.Corners"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="200dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_logo_banner_blue"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:strokeColor="@color/primary"
+                            app:strokeWidth="1dp" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_marginTop="@dimen/large_margin"
+                            android:id="@+id/textKeteranganUmum"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/primary"
+                            android:text="Keterangan Laporan"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/outputGambarPengaduan" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textKeteranganID"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="ID Laporan"
+                            android:textColor="@color/primary"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="@+id/textKeteranganTanggal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textKeteranganUmum" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/colonKeteranganID"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:paddingHorizontal="@dimen/normal_margin"
+                            android:text=":"
+                            android:textColor="@color/primary"
+                            android:textSize="16dp"
+                            app:layout_constraintStart_toEndOf="@+id/textKeteranganID"
+                            app:layout_constraintTop_toBottomOf="@+id/textKeteranganUmum" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/outputKeteranganID"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/colonKeteranganID"
+                            app:layout_constraintTop_toBottomOf="@+id/textKeteranganUmum" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textKeteranganTanggal"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Tanggal Lapor"
+                            android:textColor="@color/primary"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="@+id/textKeteranganStatus"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textKeteranganID" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/colonKeteranganTanggal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:paddingHorizontal="@dimen/normal_margin"
+                            android:text=":"
+                            android:textColor="@color/primary"
+                            android:textSize="16dp"
+                            app:layout_constraintStart_toEndOf="@+id/textKeteranganTanggal"
+                            app:layout_constraintTop_toBottomOf="@+id/colonKeteranganID" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/outputKeteranganTanggal"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/colonKeteranganTanggal"
+                            app:layout_constraintTop_toBottomOf="@+id/outputKeteranganID" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/textKeteranganStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Status Laporan"
+                            android:textColor="@color/primary"
+                            android:textSize="16dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textKeteranganTanggal" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/colonKeteranganStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:paddingHorizontal="@dimen/normal_margin"
+                            android:text=":"
+                            android:textColor="@color/primary"
+                            android:textSize="16dp"
+                            app:layout_constraintStart_toEndOf="@+id/textKeteranganStatus"
+                            app:layout_constraintTop_toBottomOf="@+id/colonKeteranganTanggal" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/outputKeteranganStatus"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/colonKeteranganStatus"
+                            app:layout_constraintTop_toBottomOf="@+id/outputKeteranganTanggal" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_marginTop="@dimen/large_margin"
+                            android:id="@+id/textJudulPengaduan"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/primary"
+                            android:text="Judul Pengaduan"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/textKeteranganStatus" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/outputJudulPengaduan"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:justificationMode="inter_word"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textJudulPengaduan" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_marginTop="@dimen/large_margin"
+                            android:id="@+id/textIsiPengaduan"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/primary"
+                            android:text="Isi Pengaduan"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/outputJudulPengaduan"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/outputIsiPengaduan"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:justificationMode="inter_word"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textIsiPengaduan" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_marginTop="@dimen/large_margin"
+                            android:id="@+id/textTanggapan"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/primary"
+                            android:text="Tanggapan"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/outputIsiPengaduan"/>
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/outputTanggapan"
+                            android:layout_width="@dimen/zero_dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:justificationMode="inter_word"
+                            android:textSize="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textTanggapan" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

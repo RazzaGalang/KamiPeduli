@@ -1,0 +1,55 @@
+<resources>
+    <dimen name="zero_dp">0dp</dimen>
+    
+    <!-- Radius -->
+    <dimen name="extra_small_radius">2dp</dimen>
+    <dimen name="small_radius">4dp</dimen>
+    <dimen name="normal_radius">6dp</dimen>
+    <dimen name="medium_radius">8dp</dimen>
+    <dimen name="large_radius">12dp</dimen>
+    <dimen name="button_small_radius">5dp</dimen>
+    <dimen name="button_medium_radius">6dp</dimen>
+    <dimen name="button_large_radius">15dp</dimen>
+    <dimen name="button_edit_profile_radius">100dp</dimen>
+
+    <!-- Margin and Padding -->
+    <dimen name="extra_small_margin">2dp</dimen>
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="normal_margin">8dp</dimen>
+    <dimen name="medium_margin">12dp</dimen>
+    <dimen name="screen_margin">16dp</dimen>
+    <dimen name="large_margin">24dp</dimen>
+    <dimen name="semi_huge_margin">32dp</dimen>
+    <dimen name="huge_margin">48dp</dimen>
+    <dimen name="extra_huge_margin">64dp</dimen>
+    <dimen name="custom_margin_10dp">10dp</dimen>
+    <dimen name="custom_margin_20dp">20dp</dimen>
+    <dimen name="custom_margin_40dp">40dp</dimen>
+    <dimen name="button_padding_vertical">10dp</dimen>
+
+    <!-- Height and Width -->
+    <dimen name="view_height">1dp</dimen>
+    <dimen name="view_large_height">2dp</dimen>
+    <dimen name="small_icon_height">12dp</dimen>
+    <dimen name="back_icon_height">16dp</dimen>
+    <dimen name="icon_height">28dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="profile_size">64dp</dimen>
+
+    <!-- Text Appearance line height -->
+    <dimen name="large_title_1_line_height">38sp</dimen>
+    <dimen name="large_title_2_line_height">35sp</dimen>
+    <dimen name="title_1_line_height">31sp</dimen>
+    <dimen name="title_2_line_height">28sp</dimen>
+    <dimen name="subtitle_1_line_height">24sp</dimen>
+    <dimen name="subtitle_2_line_height">22sp</dimen>
+    <dimen name="subtitle_3_line_height">19sp</dimen>
+    <dimen name="body_1_line_height">17sp</dimen>
+    <dimen name="body_2_line_height">16sp</dimen>
+    <dimen name="button_line_height">16sp</dimen>
+    <dimen name="validation_line_height">16sp</dimen>
+    <dimen name="caption_line_height">13sp</dimen>
+
+
+    <dimen name="avatar_height">32dp</dimen>
+</resources>
