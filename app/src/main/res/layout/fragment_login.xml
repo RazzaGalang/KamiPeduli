@@ -76,6 +76,7 @@
                     app:endIconMode="clear_text">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="text"
                         android:id="@+id/inputUsername"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

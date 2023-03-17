@@ -3,13 +3,12 @@ package com.example.ujikom.view.Main
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.ContentValues
+import android.content.ContentResolver
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
-import android.database.Cursor
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -23,7 +22,6 @@ import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.loader.content.CursorLoader
 import com.example.ujikom.R
 import com.example.ujikom.data.RetrofitBuilder
 import com.example.ujikom.databinding.FragmentPengaduanBinding
@@ -31,7 +29,6 @@ import com.example.ujikom.view.popup.ConditionConnectionErrorFragment
 import com.example.ujikom.view.popup.ConditionLoadingFragment
 import com.example.ujikom.view.popup.ConditionPengaduanSuccessFragment
 import com.example.ujikom.view.popup.ConditionServerErrorFragment
-import okhttp3.MediaType.Companion.parse
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -39,6 +36,9 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import java.io.File
+import java.io.IOException
+import java.io.InputStream
+import kotlin.math.log
 
 class PengaduanFragment : Fragment() {
 
@@ -139,14 +139,13 @@ class PengaduanFragment : Fragment() {
     private fun textWatcherJudul() {
         binding.inputJudul.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                validateJudul()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
+                validateJudul()
             }
         })
     }
@@ -154,14 +153,13 @@ class PengaduanFragment : Fragment() {
     private fun textWatcherIsiPengaduan() {
         binding.inputIsiLaporan.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                validateIsi()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
+                validateIsi()
             }
         })
     }
@@ -183,10 +181,23 @@ class PengaduanFragment : Fragment() {
             binding.inputGambar.strokeColor = ColorStateList.valueOf(Color.RED)
             false
         } else {
-
-            binding.warningNullGambar.text = ""
-            binding.inputGambar.strokeColor = ColorStateList.valueOf(Color.parseColor("#3473C8"))
-            true
+            val checkSize = isImageFileSize(requireContext(), selectedImageUri!!)
+            return if (!checkSize){
+                binding.warningNullGambar.text = "Size Gambar harus dibawah 2MB"
+                binding.inputGambar.strokeColor = ColorStateList.valueOf(Color.RED)
+                false
+            } else {
+                val checkType = isImageFileType(selectedImageUri!!)
+                if (!checkType){
+                    binding.warningNullGambar.text = "Tipe Gambar harus JPG/PNG"
+                    binding.inputGambar.strokeColor = ColorStateList.valueOf(Color.RED)
+                    false
+                } else {
+                    binding.warningNullGambar.text = ""
+                    binding.inputGambar.strokeColor = ColorStateList.valueOf(Color.parseColor("#3473C8"))
+                    true
+                }
+            }
         }
     }
 
@@ -272,6 +283,37 @@ class PengaduanFragment : Fragment() {
         val path = columnIndex?.let { cursor.getString(it) }
         cursor?.close()
         return path
+    }
+
+    private fun getImageFileSize(contentUri: Uri, context: Context): Long {
+        var inputStream: InputStream? = null
+        var size: Long = 0
+        try {
+            inputStream = context.contentResolver.openInputStream(contentUri)
+            if (inputStream != null) {
+                size = inputStream.available().toLong()
+            }
+        } catch (e: IOException) {
+            // handle exception
+        } finally {
+            try {
+                inputStream?.close()
+            } catch (e: IOException) {
+                // handle exception
+            }
+        }
+        return size
+    }
+
+    private fun isImageFileSize(context: Context, contentUri: Uri): Boolean {
+        val fileSize = getImageFileSize(contentUri, context)
+        return fileSize < 2000000L
+    }
+
+    private fun isImageFileType(uri: Uri): Boolean {
+        val contentResolver = context?.contentResolver
+        val type = contentResolver?.getType(uri)
+        return type == "image/jpeg" || type == "image/png"
     }
 
     override fun onDestroyView() {

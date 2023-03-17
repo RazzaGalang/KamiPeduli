@@ -73,10 +73,8 @@ class HomeFragment : Fragment(), PengaduanAdapter.OnItemClickListener {
             ) {
                 loadingDialog.dismiss()
 
+                emptyState.isVisible = response.body()?.data!!.isEmpty()
                 adapter.items = response.body()?.data!!
-                if (adapter.items.toString() == "[]"){
-                    emptyState.isVisible = true
-                }
             }
 
             override fun onFailure(call: Call<PengaduanResponse>, t: Throwable) {
